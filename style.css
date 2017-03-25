@@ -1,9 +1,13 @@
 html {
     font-size: 10px;
-    background: url(http://hdwallpaperbackgrounds.net/wp-content/uploads/2015/11/Funny-animals-horses-high-quality-picture.jpg);
-    background-size: cover;
 }
-body,html {
+
+body, html {
+    background-image: url(http://hdwallpaperbackgrounds.net/wp-content/uploads/2015/11/Funny-animals-horses-high-quality-picture.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
@@ -27,7 +31,7 @@ body,html {
     width: 10rem;
     text-align: center;
     color: white;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     text-shadow: 0 0 .5rem black;
 }
 
