@@ -1,12 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Kirill Permiakov CV</title>
+    <title>Funny Sounds</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1 style="text-align:center;">Hello!</h1>
-<p style="text-align:center"><img src="https://pp.vk.me/c637730/v637730416/db68/dEw8g_LTacE.jpg">
-</p>
+<div class="keys">
+    <div data-key="81" class="key">
+        <kbd>Q</kbd>
+        <span class="sound">I'll be back</span>
+    </div>
+    <div data-key="87" class="key">
+        <kbd>W</kbd>
+        <span class="sound">Effect Boing</span>
+    </div>
+    <div data-key="69" class="key">
+        <kbd>E</kbd>
+        <span class="sound">Ooh, yeah</span>
+    </div>
+    <div data-key="82" class="key">
+        <kbd>R</kbd>
+        <span class="sound">Hello</span>
+    </div>
+    <div data-key="84" class="key">
+        <kbd>T</kbd>
+        <span class="sound">Badum Tss</span>
+    </div>
+    <div data-key="89" class="key">
+        <kbd>Y</kbd>
+        <span class="sound">SadTrombone</span>
+    </div>
+</div>
+
 </body>
+
+<audio data-key="81" src="sounds/arnie.wav"></audio>
+<audio data-key="87" src="sounds/cartoon.wav"></audio>
+<audio data-key="69" src="sounds/ohyeah.wav"></audio>
+<audio data-key="82" src="sounds/Hello.mp3"></audio>
+<audio data-key="84" src="sounds/Badum-tss.mp3"></audio>
+<audio data-key="89" src="sounds/Sad-trombone.mp3"></audio>
 </html>
+
+<script>
+    function playSound(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if (!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+        key.classList.add('playing');
+
+    }
+    function removeTransition(e) {
+        if (e.propertyName != 'transform') return;
+        this.classList.remove('playing');
+    }
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition)
+    )
+    ;
+    window.addEventListener('keydown', playSound);
+</script>
+
